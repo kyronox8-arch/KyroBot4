@@ -21,7 +21,9 @@ app.command("/dsb-help", async ({ ack, respond }) => {
 `Available Commands:
 /dsb-ping - Check bot latency
 /dsb-catfact - Get a cat fact
-/dsb-joke - Get a random joke`
+/dsb-joke - Get a random joke
+/dsb-quote - Get a random quote 
+/dsb-advice - Get a random advice`
   });
 });app.command("/dsb-catfact", async ({ ack, respond }) => {
   await ack();
