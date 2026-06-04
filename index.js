@@ -88,7 +88,9 @@ ${response.data.punchline}`
   try {
     const response = await axios.get(
       "https://api.adviceslip.com/advice"
+    
     );
+    Console.log(response.data);
 
     await respond({
       text:
