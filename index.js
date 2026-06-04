@@ -38,7 +38,29 @@ app.command("/dsb-help", async ({ ack, respond }) => {
       text: "Failed to fetch a cat fact."
     });
   }
-});app.command("/dsb-joke", async ({ ack, respond }) => {
+
+});app.command("/dsb-quote", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    const response = await axios.get(
+      "https://zenquotes.io/api/random"
+    );
+
+    const quote = response.data[0].q;
+    const author = response.data[0].a;
+
+    await respond({
+      text: `"${quote}"\n\n— ${author}`
+    });
+
+  } catch (err) {
+    await respond({
+      text: "Failed to fetch a quote."
+    });
+  }
+});
+app.command("/dsb-joke", async ({ ack, respond }) => {
   await ack();
 
   try {
