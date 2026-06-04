@@ -80,6 +80,26 @@ ${response.data.punchline}`
       text: "Failed to fetch a joke."
     });
   }
+});app.command("/dsb-advice", async ({ ack, respond }) => {
+  await ack();
+
+  try {
+    const response = await axios.get(
+      "https://api.adviceslip.com/advice"
+    );
+
+    await respond({
+      text:
+`${response.data.setup}
+
+${response.data.punchline}`
+    });
+
+  } catch (err) {
+    await respond({
+      text: "Failed to fetch an advice"
+    });
+  }
 });
 (async () => {
   await app.start();
